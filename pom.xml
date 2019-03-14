@@ -73,6 +73,7 @@
                                     <version>${project.version}</version>
                                 </artifactItem>
                             </artifactItems>
+                            <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
                         </configuration>
 					</execution>
 				</executions>
