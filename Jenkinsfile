@@ -10,11 +10,11 @@ node {
 		
 		
     stage 'Build Test'
-        sh "docker build -t jenkins-test-docker:B${BUILD_NUMBER} ."
+        sh "docker build -t jenkins-test-docker:${BUILD_NUMBER} ."
   
     stage 'Run Test'
         containerID = sh (
-            script: "docker run -d jenkins-test-docker:B${BUILD_NUMBER}", 
+            script: "docker run -d jenkins-test-docker:${BUILD_NUMBER}", 
         returnStdout: true
         ).trim()
         echo "Container ID is ==> ${containerID}"
@@ -22,7 +22,7 @@ node {
         sh "docker rm ${containerID}"
 
     stage 'Push'
-		sh "docker image tag jenkins-test-docker:B${BUILD_NUMBER} junyoungman/jenkins-test-docker:B${BUILD_NUMBER}"
+		sh "docker image tag jenkins-test-docker:${BUILD_NUMBER} junyoungman/jenkins-test-docker:${BUILD_NUMBER}"
 		
-		sh "docker push junyoungman/jenkins-test-docker:B${BUILD_NUMBER}"
+		sh "docker push junyoungman/jenkins-test-docker:${BUILD_NUMBER}"
 }
