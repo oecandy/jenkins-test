@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  hello-farota:
+    restart: always
+	
+    container_name : hello-farota
+	
+    image: junyoungman/jenkins-test-docker:13
+	
+    ports:
+      - '8080:8080'
